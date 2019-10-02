@@ -5,9 +5,11 @@
 
 
 
-# Project Display Image
+# Project Pictures
 <p>
-  
+
+You can see login screen, admin panel and employee panel.
+
 <a href="https://github.com/uguryesiloglu/Job-Tracking-App/blob/master/jtpng/jt1.png" target="_blank">
 <img src="https://github.com/uguryesiloglu/Job-Tracking-App/blob/master/jtpng/jt1.png" width="200" style="max-width:100%;"></a>
 

@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{71AC3AAD-F1DF-449C-BD0B-C81761A37DCD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>JobTrackingProgram</RootNamespace>
+    <AssemblyName>JobTrackingProgram</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\BllEmployee.cs" />
+    <Compile Include="BLL\BllEmployeeTask.cs" />
+    <Compile Include="BLL\BllProject.cs" />
+    <Compile Include="BLL\BllTask.cs" />
+    <Compile Include="BLL\BllUser.cs" />
+    <Compile Include="BLL\Mesaj.cs" />
+    <Compile Include="DAL\HelperEmployee.cs" />
+    <Compile Include="DAL\HelperEmployeeTask.cs" />
+    <Compile Include="DAL\HelperProject.cs" />
+    <Compile Include="DAL\HelperTask.cs" />
+    <Compile Include="DAL\HelperTaskDescription.cs" />
+    <Compile Include="DAL\HelperUser.cs" />
+    <Compile Include="Employee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeTask.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeModel.cs" />
+    <Compile Include="Model\EmployeeTaskModel.cs" />
+    <Compile Include="PersonelWorkLoadDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonelWorkLoadDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormAciklamaSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormAciklamaSil.Designer.cs">
+      <DependentUpon>FormAciklamaSil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormAtamaIptal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormAtamaIptal.Designer.cs">
+      <DependentUpon>FormAtamaIptal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProjectModel.cs" />
+    <Compile Include="Model\TaskDescriptionModel.cs" />
+    <Compile Include="Model\TaskModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Project.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Task.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskDescription.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormAciklamaEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormAciklamaEkle.Designer.cs">
+      <DependentUpon>FormAciklamaEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormCalisanEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormCalisanEkle.Designer.cs">
+      <DependentUpon>FormCalisanEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormCalisanGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormCalisanGuncelle.Designer.cs">
+      <DependentUpon>FormCalisanGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormCalisanSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormCalisanSil.Designer.cs">
+      <DependentUpon>FormCalisanSil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormGorevAtama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormGorevAtama.Designer.cs">
+      <DependentUpon>FormGorevAtama.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormGorevEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormGorevEkle.Designer.cs">
+      <DependentUpon>FormGorevEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormGorevGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormGorevGuncelle.Designer.cs">
+      <DependentUpon>FormGorevGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormGorevSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormGorevSil.Designer.cs">
+      <DependentUpon>FormGorevSil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormProjeEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormProjeEkle.Designer.cs">
+      <DependentUpon>FormProjeEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormProjeGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormProjeGuncelle.Designer.cs">
+      <DependentUpon>FormProjeGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormProjeSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormProjeSil.Designer.cs">
+      <DependentUpon>FormProjeSil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTumCalisanlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTumCalisanlar.Designer.cs">
+      <DependentUpon>FormTumCalisanlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTumGorevler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTumGorevler.Designer.cs">
+      <DependentUpon>FormTumGorevler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAciklamaSil.resx">
+      <DependentUpon>FormAciklamaSil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAtamaIptal.resx">
+      <DependentUpon>FormAtamaIptal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormAciklamaEkle.resx">
+      <DependentUpon>FormAciklamaEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormCalisanEkle.resx">
+      <DependentUpon>FormCalisanEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormCalisanGuncelle.resx">
+      <DependentUpon>FormCalisanGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormCalisanSil.resx">
+      <DependentUpon>FormCalisanSil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormGorevAtama.resx">
+      <DependentUpon>FormGorevAtama.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormGorevEkle.resx">
+      <DependentUpon>FormGorevEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormGorevGuncelle.resx">
+      <DependentUpon>FormGorevGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormGorevSil.resx">
+      <DependentUpon>FormGorevSil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormProjeEkle.resx">
+      <DependentUpon>FormProjeEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormProjeGuncelle.resx">
+      <DependentUpon>FormProjeGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormProjeSil.resx">
+      <DependentUpon>FormProjeSil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTumCalisanlar.resx">
+      <DependentUpon>FormTumCalisanlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTumGorevler.resx">
+      <DependentUpon>FormTumGorevler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="PersonelWorkLoadDataSet1.xsc">
+      <DependentUpon>PersonelWorkLoadDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="PersonelWorkLoadDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PersonelWorkLoadDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PersonelWorkLoadDataSet1.xss">
+      <DependentUpon>PersonelWorkLoadDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\JobTrackingProgram.Model.EmployeeTaskModel.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

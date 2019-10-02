@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PersonelWorkLoadModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PersonelWorkLoadEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employee" EntityType="PersonelWorkLoadModel.Employee" />
+    <EntitySet Name="EmployeeTask" EntityType="PersonelWorkLoadModel.EmployeeTask" />
+    <EntitySet Name="Project" EntityType="PersonelWorkLoadModel.Project" />
+    <EntitySet Name="sysdiagrams" EntityType="PersonelWorkLoadModel.sysdiagrams" />
+    <EntitySet Name="Task" EntityType="PersonelWorkLoadModel.Task" />
+    <EntitySet Name="TaskDescription" EntityType="PersonelWorkLoadModel.TaskDescription" />
+    <EntitySet Name="User" EntityType="PersonelWorkLoadModel.User" />
+    <AssociationSet Name="FK_Employee_User" Association="PersonelWorkLoadModel.FK_Employee_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeamMember_Employee1" Association="PersonelWorkLoadModel.FK_TeamMember_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeTask" EntitySet="EmployeeTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeamMember_Task" Association="PersonelWorkLoadModel.FK_TeamMember_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="EmployeeTask" EntitySet="EmployeeTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Project" Association="PersonelWorkLoadModel.FK_Task_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskDescription_Task" Association="PersonelWorkLoadModel.FK_TaskDescription_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="TaskDescription" EntitySet="TaskDescription" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="PersonelWorkLoadModel.FK_Employee_User" FromRole="Employee" ToRole="User" />
+    <NavigationProperty Name="EmployeeTask" Relationship="PersonelWorkLoadModel.FK_TeamMember_Employee1" FromRole="Employee" ToRole="EmployeeTask" />
+  </EntityType>
+  <EntityType Name="EmployeeTask">
+    <Key>
+      <PropertyRef Name="EmployeeTaskID" />
+    </Key>
+    <Property Name="EmployeeTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="TaskID" Type="Int32" Nullable="false" />
+    <Property Name="CreatorID" Type="Int32" Nullable="false" />
+    <Property Name="Creator" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IssueType" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Employee" Relationship="PersonelWorkLoadModel.FK_TeamMember_Employee1" FromRole="EmployeeTask" ToRole="Employee" />
+    <NavigationProperty Name="Task" Relationship="PersonelWorkLoadModel.FK_TeamMember_Task" FromRole="EmployeeTask" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Budget" Type="Int32" />
+    <Property Name="ProjectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Task" Relationship="PersonelWorkLoadModel.FK_Task_Project" FromRole="Project" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="EmployeeTask" Relationship="PersonelWorkLoadModel.FK_TeamMember_Task" FromRole="Task" ToRole="EmployeeTask" />
+    <NavigationProperty Name="Project" Relationship="PersonelWorkLoadModel.FK_Task_Project" FromRole="Task" ToRole="Project" />
+    <NavigationProperty Name="TaskDescription" Relationship="PersonelWorkLoadModel.FK_TaskDescription_Task" FromRole="Task" ToRole="TaskDescription" />
+  </EntityType>
+  <EntityType Name="TaskDescription">
+    <Key>
+      <PropertyRef Name="TaskDescriptionID" />
+    </Key>
+    <Property Name="TaskDescriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskDescription1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TaskID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Task" Relationship="PersonelWorkLoadModel.FK_TaskDescription_Task" FromRole="TaskDescription" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employee" Relationship="PersonelWorkLoadModel.FK_Employee_User" FromRole="User" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK_Employee_User">
+    <End Type="PersonelWorkLoadModel.User" Role="User" Multiplicity="1" />
+    <End Type="PersonelWorkLoadModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeamMember_Employee1">
+    <End Type="PersonelWorkLoadModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="PersonelWorkLoadModel.EmployeeTask" Role="EmployeeTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="EmployeeTask">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeamMember_Task">
+    <End Type="PersonelWorkLoadModel.Task" Role="Task" Multiplicity="1" />
+    <End Type="PersonelWorkLoadModel.EmployeeTask" Role="EmployeeTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="EmployeeTask">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Project">
+    <End Type="PersonelWorkLoadModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="PersonelWorkLoadModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskDescription_Task">
+    <End Type="PersonelWorkLoadModel.Task" Role="Task" Multiplicity="1" />
+    <End Type="PersonelWorkLoadModel.TaskDescription" Role="TaskDescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="TaskDescription">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

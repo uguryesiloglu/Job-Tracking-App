@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="463d995651114c979dd2c8426ea4e810" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="PersonelWorkLoadModel.Employee" Width="1.5" PointX="3" PointY="7.5" />
+        <EntityTypeShape EntityType="PersonelWorkLoadModel.EmployeeTask" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="PersonelWorkLoadModel.Project" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="PersonelWorkLoadModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PersonelWorkLoadModel.Task" Width="1.5" PointX="3" PointY="2.125" />
+        <EntityTypeShape EntityType="PersonelWorkLoadModel.TaskDescription" Width="1.5" PointX="5.25" PointY="6" />
+        <EntityTypeShape EntityType="PersonelWorkLoadModel.User" Width="1.5" PointX="0.75" PointY="7.625" />
+        <AssociationConnector Association="PersonelWorkLoadModel.FK_Employee_User" />
+        <AssociationConnector Association="PersonelWorkLoadModel.FK_TeamMember_Employee1" />
+        <AssociationConnector Association="PersonelWorkLoadModel.FK_TeamMember_Task" />
+        <AssociationConnector Association="PersonelWorkLoadModel.FK_Task_Project" />
+        <AssociationConnector Association="PersonelWorkLoadModel.FK_TaskDescription_Task" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
